@@ -16,6 +16,7 @@ class CreateTeachersTable extends Migration {
 			$t->bigIncrements('id');
 			$t->bigInteger('user_id');
 			$t->string('full_name')->nullable();
+			$t->string('email')->nullable();
 			$t->string('image')->nullable();
 		});
 	}

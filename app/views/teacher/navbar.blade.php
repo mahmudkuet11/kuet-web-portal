@@ -16,11 +16,9 @@
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile<span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="{{ URL::route('getUpdateStudentProfile') }}">Update Profile</a></li>
+	            <li><a href="{{ URL::route('getUpdateTeachersProfile') }}">Update Profile</a></li>
 	          </ul>
 	        </li>
-
-	        <li><a href="{{ URL::route('getCourseRegistration') }}">Course Registration</a></li>
 
 	      </ul>
 	      <form class="navbar-form navbar-left" role="search">

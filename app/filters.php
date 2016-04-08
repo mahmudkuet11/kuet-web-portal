@@ -108,6 +108,15 @@ Route::filter('student', function(){
 		return Redirect::route('getLogin');
 	}
 });
+Route::filter('teacher', function(){
+	if(Session::has('user_id')){
+		if(Session::get('user_type') != 'teacher'){
+			return Redirect::route('home');
+		}
+	}else{
+		return Redirect::route('getLogin');
+	}
+});
 
 Route::filter('login', function(){
 	if(!Session::has('user_id')){

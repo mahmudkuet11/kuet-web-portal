@@ -22,27 +22,28 @@
 		</div>
 	<?php }
 ?>
-
+				<?php
+					$student = Student::getStudentProfile(Session::get('user_id'));
+				?>
 				<form class="form-horizontal" method="post" action="{{ URL::route('postUpdateStudentProfile') }}">
 				  <fieldset>
 				    <legend>Update Your Profile</legend>
 				    <div class="form-group">
 				      <label for="full_name" class="col-md-2 control-label">Full Name</label>
 				      <div class="col-md-10">
-				        <input name="full_name" type="text" class="form-control" id="full_name" placeholder="Full Name">
+				        <input name="full_name" type="text" class="form-control" id="full_name" placeholder="Full Name" {{ $student->full_name != null ? 'value="'. $student->full_name .'"' : '' }}>
 				      </div>
 				    </div>
 
 				    <div class="form-group">
 				      <label for="email" class="col-md-2 control-label">Email</label>
 				      <div class="col-md-10">
-				        <input name="email" type="text" class="form-control" id="email" placeholder="Email">
+				        <input name="email" type="text" class="form-control" id="email" placeholder="Email" {{ $student->email != null ? 'value="'. $student->email .'"' : '' }}>
 				      </div>
 				    </div>
 				   
 				    <div class="form-group">
 				      <div class="col-md-10 col-md-offset-2">
-				        <button type="reset" class="btn btn-default">Cancel</button>
 				        <button type="submit" class="btn btn-primary">Submit</button>
 				      </div>
 				    </div>

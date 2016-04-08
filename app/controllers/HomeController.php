@@ -23,6 +23,9 @@ class HomeController extends BaseController {
 		if(Session::get('user_type') == 'student'){
 			return Redirect::route('getStudentDashboard');
 		}
+		if(Session::get('user_type') == 'teacher'){
+			return Redirect::route('getTeacherDashboard');
+		}
 	}
 
 }

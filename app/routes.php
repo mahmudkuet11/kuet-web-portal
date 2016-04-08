@@ -105,7 +105,42 @@ Route::group(array('before'	=>	'student'), function(){
 			'as'	=>	'postUpdateStudentProfile',
 			'uses'	=>	'StudentController@postUpdateStudentProfile'
 		));
+	Route::get('/student/course/registration', array(
+			'as'	=>	'getCourseRegistration',
+			'uses'	=>	'StudentController@getCourseRegistration'
+		));
+	Route::get('/student/course/offered', array(
+			'as'	=>	'ajaxOfferedCourse',
+			'uses'	=>	'QueryController@ajaxOfferedCourse'
+		));
+	Route::get('/student/course-registration-status', array(
+			'as'	=>	'ajaxGetCourseRegistrationStatus',
+			'uses'	=>	'QueryController@ajaxGetCourseRegistrationStatus'
+		));
+	Route::post('/student/forward', array(
+			'as'	=>	'postForwardToAdviser',
+			'uses'	=>	'StudentController@postForwardToAdviser'
+		));
 });
+
+/*
+*	Teachers Route
+*/
+Route::group(array('before'	=>	'teacher'), function(){
+	Route::get('/teacher/dashboard', array(
+			'as'	=>	'getTeacherDashboard',
+			'uses'	=>	'TeacherController@getTeacherDashboard'
+		));
+	Route::get('/teacher/profile/update', array(
+			'as'	=>	'getUpdateTeachersProfile',
+			'uses'	=>	'TeacherController@getUpdateTeachersProfile'
+		));
+	Route::post('/teacher/profile/update', array(
+			'as'	=>	'postUpdateTeachersProfile',
+			'uses'	=>	'TeacherController@postUpdateTeachersProfile'
+		));
+});
+
 
 Route::get('/test', array(
 		'as'	=>	'test',

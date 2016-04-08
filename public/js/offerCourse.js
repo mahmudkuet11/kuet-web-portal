@@ -30,6 +30,8 @@ $(document).ready(function(){
 
 
 	$("#submit_course_offer").click(function(){
+		$("#submit_course_offer").attr("disabled","disabled");
+		$("#submit_course_offer").html("Please Wait....");
 
 		// get students list
 		var students_list = [];
@@ -59,6 +61,8 @@ $(document).ready(function(){
 			}else{
 				$("#error_msg").show();
 			}
+			$("#submit_course_offer").removeAttr("disabled");
+			$("#submit_course_offer").html("submit");
 		});
 
 	});

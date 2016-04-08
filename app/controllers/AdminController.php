@@ -143,21 +143,21 @@ class AdminController extends BaseController{
 
 			}
 			DB::commit();
-
-			/*foreach ($students as $student) {
+			
+			foreach ($students as $student) {
 					$student_info = DB::table('students')->where('id', $student)->first();
 					$full_name = $student_info->full_name;
 					$email = $student_info->email;
 					if($email == null || $full_name == null){
 
 					}else{
-						Mail::send('emails.courseRegistration', array('name'	=>	$full_name), function($message)
+						Mail::queue('emails.courseRegistration', array('name'	=>	$full_name), function($message) use ($full_name, $email)
 						{
-						    $message->to('mahmudkuet11@gmail.com', $full_name)->subject('About Course Registration');
+						    $message->to($email, $full_name)->subject('Course Registration');
 						});
 					}
 					
-			}*/
+			}
 
 			return 1;
 		}catch(\Exception $e){
