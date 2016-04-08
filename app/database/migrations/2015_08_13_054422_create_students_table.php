@@ -21,7 +21,6 @@ class CreateStudentsTable extends Migration {
 			$t->string('batch')->nullable();
 			$t->bigInteger('adviser_id')->nullable();
 			$t->string('image')->nullable();
-			$t->string('offered_courses')->nullable();
 		});
 	}
 
