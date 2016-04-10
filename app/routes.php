@@ -70,14 +70,7 @@ Route::group(array('before'	=>	'admin'), function(){
 		'as'	=>	'postAssignAdviser',
 		'uses'	=>	'AdminController@postAssignAdviser'
 		));
-	Route::get('/offer-course', array(
-		'as'	=>	'getOfferCourses',
-		'uses'	=>	'AdminController@getOfferCourses'
-		));
-	Route::post('/offer-course', array(
-		'as'	=>	'postOfferCourses',
-		'uses'	=>	'AdminController@postOfferCourses'
-		));
+
 });
 
 /*
@@ -142,8 +135,4 @@ Route::group(array('before'	=>	'teacher'), function(){
 });
 
 
-Route::get('/test', array(
-		'as'	=>	'test',
-		'uses'	=>	'TestController@sendMail'
-	));
 

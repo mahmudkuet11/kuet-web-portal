@@ -302,3 +302,12 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+.course_registration .available_courses{
+    width:100%;
+}
+.course_registration .course{
+    width:200px;
+    border:1px solid #e1e1e1;
+}
+

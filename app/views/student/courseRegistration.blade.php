@@ -5,40 +5,45 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Course Registration</h3>
+				<h1>Course Registration</h1>
+				
 				<div class="row">
-					<div class="col-md-12">
-						<div class="form-group col-md-5">
-						      <label for="year" class="col-md-4 control-label">Select Year</label>
-						      <div class="col-md-7">
-								<select name="" class="form-control" id="year">
-						          <option value="1">First Year</option>
-						          <option value="2">Second Year</option>
-						          <option value="3">Third Year</option>
-						          <option value="4">Fourth Year</option>
-						        </select>
-						      </div>
-						</div>
-						<div class="form-group col-md-5">
-						      <label for="term" class="col-md-4 control-label">Select Term</label>
-						      <div class="col-md-7">
-								<select class="form-control" id="term">
-						          <option value="first">First Term</option>
-						          <option value="second">Second Term</option>
-						          <option value="backlog">Backlog</option>
-						        </select>
-						      </div>
-						</div>
-						<div class="form-group col-md-2">
-						    <button class="btn btn-primary" id="show_course">Show</button>
+					<div class="col-md-5">
+						<label for="select_year">Select Year</label>
+						<select name="" id="" class="form-control">
+							<option value="1">First Year</option>
+							<option value="2">Second Year</option>
+							<option value="3">Third Year</option>
+							<option value="4">Fourth Year</option>
+						</select>
+					</div>
+					<div class="col-md-5">
+						<label for="select_year">Select Term</label>
+						<select name="" id="" class="form-control">
+							<option value="1">1st</option>
+							<option value="2">2nd</option>
+							<option value="backlog">Backlog</option>
+							<option value="special_backlog">Special Backlog</option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<br>
+						<button class="btn btn-primary">Show</button>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-6 course_registration">
+						<div class="available_courses">
+							<div class="course">
+								<h3>Compiler Design</h3>
+								Code: <b>CSE 1207</b><br>
+								Credit: <b>3.00</b>
+							</div>
 						</div>
 					</div>
 				</div>
-				<br><br>
-				<table class="table table-striped" id="course">
-					
-				</table>
-				<button class="btn btn-primary" id="forward_button">Forward to adviser</button>
+
 			</div>
 		</div>
 	</div>
