@@ -31,50 +31,67 @@ class StudentController extends BaseController{
 		}
 	}
 
-	public function getCourseRegistration(){
-		return View::make('student.courseRegistration');
+	public function getNewCourseRegistration(){
+		return View::make('student.newCourseRegistration');
 	}
 
 	public function postForwardToAdviser(){
 		$year = Input::get('year');
 		$term = Input::get('term');
+		$session = Input::get('session');
+		$courses = Input::get('courses');
 
 		$user_id = Session::get('user_id');
-		$roll = DB::table('users')->where('id', $user_id)->first()->username;
-		$student_id = DB::table('students')->where('roll', $roll)->first()->id;
-		$course_registration = DB::table('course_registrations')
-									->where('student_id', $student_id)
-									->where('year', $year)
-									->where('term', $term)
-									->where('course_registration_status', 'student')
-									->first();
-		if($course_registration == null){
-			return '0';
-		}else{
-			$status = DB::table('course_registrations')
-				->where('student_id', $student_id)
-				->update(array(
+		$username = DB::table('users')->where('id', $user_id)->first()->username;
+		$student_id = DB::table('students')->where('roll', $username)->first()->id;
+
+		DB::beginTransaction();
+		
+		try{
+			DB::table('course_registrations')->insert(array(
+					'student_id'					=>	$student_id,
+					'year'							=>	$year,
+					'term'							=>	$term,
+					'session'						=>	$session,
+					'courses'						=>	$courses,
 					'course_registration_status'	=>	'adviser'
 				));
-			if($status == 1){
-				$info = "Your course registration request has been sent to the adviser for approval.";
-				$student = DB::table('students')->where('id', $student_id)->first();
-				$email = $student->email;
-				$full_name = $student->full_name;
-				if($email != null){
-					if($full_name == null){
-						$full_name = "";
-					}
-					Mail::send('emails.info', array('info'	=>	$info), function($message) use ($email, $full_name)
-					{
-					    $message->to($email, $full_name)->subject('Course Registration');
-					});
-				}
-				
-				return 1;
-			}else{
-				return 0;
-			}
+
+			DB::commit();
+			return '1';
+		}catch(\Exception $e){
+			DB::rollback();
+			return '0';
 		}
+	}
+
+	public function getViewCourseRegistration(){
+		return View::make('student.viewCourseRegistration');
+	}
+
+	public function getAllRegisteredCourses(){
+		$user_id = Session::get('user_id');
+		$username = DB::table('users')->where('id', $user_id)->first()->username;
+		$student_id = DB::table('students')->where('roll', $username)->first()->id;
+
+		$registered_courses = DB::table('course_registrations')->where('student_id', $student_id)->get();
+
+		return json_encode($registered_courses);
+	}
+
+	public function postDeleteRegistration(){
+		$registrationID = Input::get('registration_id');
+		DB::beginTransaction();
+		
+		try{
+			DB::table('course_registrations')->where('id', $registrationID)->delete();
+			DB::commit();
+			return '1';
+		}catch(\Exception $e){
+			DB::rollback();
+			return '0';
+		}
+		
+		
 	}
 }

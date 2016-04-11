@@ -309,5 +309,27 @@ textarea {
 .course_registration .course{
     width:200px;
     border:1px solid #e1e1e1;
+    padding: 10px;
+    float:left;
+    height: 150px;
+    cursor:pointer;
 }
-
+.course_registration .course:hover{
+    border:1px solid #666;
+}
+.remove{
+    background: #e74c3c;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+.remove:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.selected_courses table tbody select{
+    margin-top: -8px;
+}
+#success_alert{
+    display:none;
+}

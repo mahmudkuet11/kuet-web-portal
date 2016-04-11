@@ -18,7 +18,7 @@ class CreateCourseRegistrationsTable extends Migration {
 			$t->string('year');
 			$t->string('term');
 			$t->string('session');
-			$t->string('courses');
+			$t->text('courses');
 			$t->string('course_registration_status');
 		});
 	}

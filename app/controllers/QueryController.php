@@ -52,4 +52,19 @@ class QueryController extends BaseController{
 			return 404;
 		}
 	}
+
+	public function getAvailableCourses(){
+		/*
+		*	possible options are: 1/2/3/4
+		*/
+		$year = Input::get('year');
+		/*
+		*	possible options are:
+		*	First Term - 1
+		*	Second Term - 2
+		*/
+		$term = Input::get('term'); 
+		$courses = DB::select(DB::raw("select * from courses where code like '%". $year . $term ."__%'"));
+		return json_encode($courses);
+	}
 }

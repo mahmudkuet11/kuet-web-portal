@@ -80,6 +80,10 @@ Route::get('/get/students/{batch}/{department}', array(
 		'as'	=>	'getStudents',
 		'uses'	=>	'QueryController@getStudents'
 	));
+Route::get('/get/course', array(
+		'as'	=>	'getAvailableCourses',
+		'uses'	=>	'QueryController@getAvailableCourses'
+	));
 
 /*
 *	Student Route
@@ -99,9 +103,28 @@ Route::group(array('before'	=>	'student'), function(){
 			'uses'	=>	'StudentController@postUpdateStudentProfile'
 		));
 	Route::get('/student/course/registration', array(
-			'as'	=>	'getCourseRegistration',
-			'uses'	=>	'StudentController@getCourseRegistration'
+			'as'	=>	'getNewCourseRegistration',
+			'uses'	=>	'StudentController@getNewCourseRegistration'
 		));
+	Route::get('/student/view/course/registration', array(
+			'as'	=>	'getViewCourseRegistration',
+			'uses'	=>	'StudentController@getViewCourseRegistration'
+		));
+
+	Route::get('/student/course/registration/all', array(
+			'as'	=>	'getAllRegisteredCourses',
+			'uses'	=>	'StudentController@getAllRegisteredCourses'
+		));
+	Route::post('/student/registration/delete', array(
+			'as'	=>	'postDeleteRegistration',
+			'uses'	=>	'StudentController@postDeleteRegistration'
+		));
+
+
+
+
+
+
 	Route::get('/student/course/offered', array(
 			'as'	=>	'ajaxOfferedCourse',
 			'uses'	=>	'QueryController@ajaxOfferedCourse'
@@ -132,6 +155,8 @@ Route::group(array('before'	=>	'teacher'), function(){
 			'as'	=>	'postUpdateTeachersProfile',
 			'uses'	=>	'TeacherController@postUpdateTeachersProfile'
 		));
+
+	
 });
 
 

@@ -20,6 +20,8 @@
 	          </ul>
 	        </li>
 
+	        <li><a href="{{ URL::route('getUpdateTeachersProfile') }}">Course Registration</a></li>
+
 	      </ul>
 	      <form class="navbar-form navbar-left" role="search">
 	        <div class="form-group">
